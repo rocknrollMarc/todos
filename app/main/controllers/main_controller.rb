@@ -11,10 +11,24 @@ class MainController < ModelController
     # Add code for when the about view is loaded
   end
 
+  def mark_all
+    set_all(_all_completed.cur)
+  end
+
+  def set_all(completed)
+    store._items.each do |item|
+      item._complete = completed
+    end
+  end
+
 
   def add_item
-    page._items << _new_todos.cur
+    store._items << _new_todos.cur
     self._new_todos = {}
+  end
+
+  def remove_item(item)
+    store._items.delete(item)
   end
 
   private

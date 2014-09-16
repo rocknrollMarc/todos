@@ -2,13 +2,19 @@
 Todos
 
 <:Body>
-<h1>Todos</h1>
+<h1>{store._items.or([]).size} - Todos</h1>
 
 <table class="table" style="width: auto;">
-  {#each page._items as item}
+  <tr>
+    <td><input type="checkbox" e-click="mark_all" checked="{_all_completed}" /></td>
+    <td class="{#if _all_completed}completed{/}">Mark All</td>
+  </tr>
+
+  {#each store._items as item}
   <tr>
     <td><input type="checkbox" checked="{item._complete}" /></td>
-    <td>{item._label}</td>
+    <td class="{#if item._complete}complete{/}">{item._label}</td>
+    <td><button e-click="remove_item(item)">X</button></td>
   </tr>
   {/}
 </table>
