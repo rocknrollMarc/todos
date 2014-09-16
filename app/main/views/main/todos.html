@@ -2,22 +2,27 @@
 Todos
 
 <:Body>
-<h1>{store._items.or([]).size} - Todos</h1>
+<div class="row">
+  <div class="col-md-4">
+    <h1>{store._items.or([]).size} - Todos</h1>
 
-<table class="table" style="width: auto;">
-  <tr>
-    <td><input type="checkbox" e-click="mark_all" checked="{_all_completed}" /></td>
-    <td class="{#if _all_completed}completed{/}">Mark All</td>
-  </tr>
+    <table class="table" style="width: auto;">
+      <tr>
+        <td><input type="checkbox" e-click="mark_all" checked="{_all_completed}" /></td>
+        <td class="{#if _all_completed}completed{/}">Mark All</td>
+      </tr>
 
-  {#each store._items as item}
-  <tr>
-    <td><input type="checkbox" checked="{item._complete}" /></td>
-    <td class="{#if item._complete}complete{/}">{item._label}</td>
-    <td><button e-click="remove_item(item)">X</button></td>
-  </tr>
-  {/}
-</table>
+      {#each store._items as item}
+      <tr 
+        e-click="params._index = index"
+        class="{#if params._index == index}selected{/}"
+        >
+        <td><input type="checkbox" checked="{item._complete}" /></td>
+        <td class="{#if item._complete}complete{/}">{item._label}</td>
+        <td><button e-click="remove_item(item)">X</button></td>
+      </tr>
+      {/}
+    </table>
 
 <form e-submit="add_item" role="form">
   <div class="form-group">
@@ -25,3 +30,9 @@ Todos
     <input class="form-control" type="text" value="{_new_todos._label}" /> 
   </div>
 </form>
+</div>
+<div class="col-md-8">
+  <h2>{page._current_todo._label}</h2>
+  </div>
+</div>
+

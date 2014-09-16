@@ -4,7 +4,7 @@ class MainController < ModelController
   end
 
   def todos
-
+    page._current_todo = store._items[params._index.to_i]
   end
 
   def about
