@@ -4,6 +4,7 @@ gem 'volt', '0.7.18'
 
 
 # The following gem's are optional for themeing
+gem 'volt-editable-text'
 
 # Twitter bootstrap
 gem 'volt-bootstrap'

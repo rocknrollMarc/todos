@@ -18,7 +18,9 @@ Todos
         class="{#if params._index == index}selected{/}"
         >
         <td><input type="checkbox" checked="{item._complete}" /></td>
-        <td class="{#if item._complete}complete{/}">{item._label}</td>
+        <td class="{#if item._complete}complete{/}">
+          <:editable-text value="{item._label}" />
+        </td>
         <td><button e-click="remove_item(item)">X</button></td>
       </tr>
       {/}
@@ -33,6 +35,7 @@ Todos
 </div>
 <div class="col-md-8">
   <h2>{page._current_todo._label}</h2>
+  <textarea>{page._current_todo._description}</textarea>
   </div>
 </div>
 
