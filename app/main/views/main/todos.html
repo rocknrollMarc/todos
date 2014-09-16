@@ -1,0 +1,21 @@
+<:Title>
+Todos
+
+<:Body>
+<h1>Todos</h1>
+
+<table class="table" style="width: auto;">
+  {#each page._items as item}
+  <tr>
+    <td><input type="checkbox" checked="{item._complete}" /></td>
+    <td>{item._label}</td>
+  </tr>
+  {/}
+</table>
+
+<form e-submit="add_item" role="form">
+  <div class="form-group">
+    <label>Todo</label>
+    <input class="form-control" type="text" value="{_new_todos._label}" /> 
+  </div>
+</form>
